@@ -8,6 +8,8 @@
 #include <stdbool.h>
 #include "lvt_system.h"
 
+//gcc -o central Systems/lvt_system.c central_on_board_computer.c -lpthread
+// ./central
 
 extern char binary_lvtsystem[6]; //Variável para a leitura do código binário LVT
 
