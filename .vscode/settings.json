@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "termios_util.h": "c",
+        "unistd.h": "c",
+        "brake_system.h": "c",
+        "termios.h": "c"
+    }
+}
