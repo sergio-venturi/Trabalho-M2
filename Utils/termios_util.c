@@ -1,6 +1,7 @@
 #include "termios_util.h"
 
-char binary_system[8] = "0000000";
+char binary_system[9] = "00000001";
+float motor_temperature = 0;
 
 void set_termios(struct termios *prev) {
     struct termios new_termios;
@@ -21,7 +22,7 @@ void le_teclado() {
     while (1) {
         char tecla;
         char buffer[1];
-
+        motor_temperature = 60; // Temperatura do motor
         if (read(STDIN_FILENO, buffer, 1) > 0) {
             tecla = buffer[0];
             if (tecla == 'v' || tecla == 'V') {
@@ -38,6 +39,8 @@ void le_teclado() {
                 binary_system[5] = (binary_system[5] == '0') ? '1' : '0'; //ABS funcionando roda direita
             } else if (tecla == 'j' || tecla == 'J') {
                 binary_system[6] = (binary_system[6] == '0') ? '1' : '0'; //ABS funcionando roda esquerda
+            } else if (tecla == 'h' || tecla == 'H') {
+                binary_system[7] = (binary_system[7] == '0') ? '1' : '0'; //Injeção funcionando 
             }
         }
     }
