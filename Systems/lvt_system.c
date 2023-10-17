@@ -3,7 +3,7 @@
 #include <string.h>
 
 char binary_lvtsystem[6] = "00000";
-extern char binary_system[8]; 
+extern char binary_system[13]; 
 
 int lvt_system() {
     while (1)

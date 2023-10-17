@@ -3,6 +3,9 @@
         "termios_util.h": "c",
         "unistd.h": "c",
         "brake_system.h": "c",
-        "termios.h": "c"
+        "termios.h": "c",
+        "life_support_equipment_system.h": "c",
+        "motor_system.h": "c",
+        "lvt_system.h": "c"
     }
 }
