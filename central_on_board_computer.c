@@ -18,9 +18,7 @@ extern char binary_motor_system[2]; //Variável para a leitura do código binár
 extern char binary_life_support_system[5]; //Variável para a leitura do código binário LSE
 
 void data_reading(){
-    while(1){
-        le_teclado();
-    }
+    le_teclado();
 }
 void data_print(){
     while(1){
