@@ -27,6 +27,9 @@ void data_print(){
         printf("%s-", binary_motor_system);
         printf("%s-", binary_life_support_system);
         printf("%0.2f\n", motor_temperature);
+
+        usleep(5000);
+        system("clear");
     }
 }
 
