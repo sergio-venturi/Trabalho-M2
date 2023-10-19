@@ -17,16 +17,46 @@ extern char binary_brake_system[3]; //Variável para a leitura do código binár
 extern char binary_motor_system[2]; //Variável para a leitura do código binário Motor
 extern char binary_life_support_system[5]; //Variável para a leitura do código binário LSE
 
+void printBinaryField(const char *name, const char *binary) {
+    printf("%s: ", name);
+
+    if (binary[0] == '0') {
+        printf("\033[31mDESATIVADO \033[0m"); // Vermelho para desativado
+    } else {
+        printf("\033[32mATIVADO \033[0m"); // Verde para ativado
+    }
+
+    printf("\n");
+}
+
 void data_reading(){
     le_teclado();
 }
 void data_print(){
     while(1){
-        printf("%s-", binary_lvtsystem);
-        printf("%s-", binary_brake_system);
-        printf("%s-", binary_motor_system);
-        printf("%s-", binary_life_support_system);
-        printf("%0.2f\n", motor_temperature);
+        // printf("%s-", binary_lvtsystem);
+        // printf("%s-", binary_brake_system);
+        // printf("%s-", binary_motor_system);
+        // printf("%s-", binary_life_support_system);
+        // printf("%0.2f\n", motor_temperature);
+        printBinaryField("L", binary_lvtsystem);
+        printBinaryField("V", binary_lvtsystem + 1);
+        printBinaryField("T", binary_lvtsystem + 2);
+        printBinaryField("LL", binary_lvtsystem + 3);
+        printBinaryField("VV", binary_lvtsystem + 4);
+
+        printBinaryField("Freio 1", binary_brake_system);
+        printBinaryField("Freio 2", binary_brake_system + 1);
+
+        printBinaryField("Motor System", binary_motor_system);
+
+        printBinaryField("Binary", binary_life_support_system);
+        printBinaryField("Life", binary_life_support_system + 1);
+        printBinaryField("Support", binary_life_support_system + 2);
+        printBinaryField("System", binary_life_support_system + 3);
+
+        // Imprima a temperatura
+        printf("Temperatura do motor: %.2f\n", motor_temperature);
 
         usleep(5000);
         system("clear");
