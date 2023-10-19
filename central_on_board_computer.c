@@ -39,21 +39,21 @@ void data_print(){
         // printf("%s-", binary_motor_system);
         // printf("%s-", binary_life_support_system);
         // printf("%0.2f\n", motor_temperature);
-        printBinaryField("L", binary_lvtsystem);
-        printBinaryField("V", binary_lvtsystem + 1);
-        printBinaryField("T", binary_lvtsystem + 2);
-        printBinaryField("LL", binary_lvtsystem + 3);
-        printBinaryField("VV", binary_lvtsystem + 4);
+        printBinaryField("Vidro Motorista", binary_lvtsystem);
+        printBinaryField("Vidro Passageiro", binary_lvtsystem + 1);
+        printBinaryField("Trava porta motorista", binary_lvtsystem + 2);
+        printBinaryField("Trava porta passageiro", binary_lvtsystem + 3);
+        printBinaryField("Faróis dianteiros", binary_lvtsystem + 4);
 
-        printBinaryField("Freio 1", binary_brake_system);
-        printBinaryField("Freio 2", binary_brake_system + 1);
+        printBinaryField("ABS roda direita", binary_brake_system);
+        printBinaryField("ABS roda esquerda", binary_brake_system + 1);
 
-        printBinaryField("Motor System", binary_motor_system);
+        printBinaryField("Injeção", binary_motor_system);
 
-        printBinaryField("Binary", binary_life_support_system);
-        printBinaryField("Life", binary_life_support_system + 1);
-        printBinaryField("Support", binary_life_support_system + 2);
-        printBinaryField("System", binary_life_support_system + 3);
+        printBinaryField("AirBag motorista", binary_life_support_system);
+        printBinaryField("AirBag passageiro", binary_life_support_system + 1);
+        printBinaryField("Cinto motorista", binary_life_support_system + 2);
+        printBinaryField("Cinto passageiro", binary_life_support_system + 3);
 
         // Imprima a temperatura
         printf("Temperatura do motor: %.2f\n", motor_temperature);
