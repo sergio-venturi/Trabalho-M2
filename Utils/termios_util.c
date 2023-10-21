@@ -1,7 +1,8 @@
 #include "termios_util.h"
 
 char binary_system[13] = "000000011100"; //Airbags e Injeção começam ativados
-float motor_temperature = 0;
+float motor_temperature = 60;
+float velocidade = 0;
 
 void set_termios(struct termios *prev) {
     struct termios new_termios;
@@ -22,7 +23,7 @@ void le_teclado() {
     while (1) {
         char tecla;
         char buffer[1];
-        motor_temperature = 60; // Temperatura do motor
+        // motor_temperature = 60; // Temperatura do motor
         if (read(STDIN_FILENO, buffer, 1) > 0) {
             tecla = buffer[0];
             if (tecla == 'v' || tecla == 'V') {
@@ -49,8 +50,16 @@ void le_teclado() {
                 binary_system[10] = (binary_system[10] == '0') ? '1' : '0'; //Cinto motorista
             } else if (tecla == 's' || tecla == 'S') {
                 binary_system[11] = (binary_system[11] == '0') ? '1' : '0'; //Cinto passageiro
+            } else if (tecla == ' ') {
+                if (velocidade > 140.00){
+                    velocidade = 140.00;
+                } else {
+                    velocidade+=1.00;
+                }
             }
+            
         }
+        
     }
     restore_termios(&prev_termios);
 }

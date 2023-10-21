@@ -27,6 +27,7 @@
 
 
 extern float motor_temperature;     //Variável para a leitura da temperatura do Motor
+extern float velocidade;
 extern char binary_lvtsystem[6];    //Variável para a leitura do código binário LVT
 extern char binary_brake_system[3]; //Variável para a leitura do código binário Freio
 extern char binary_motor_system[2]; //Variável para a leitura do código binário Motor
@@ -42,6 +43,21 @@ void printBinaryField(const char *name, const char *binary) {
     }
 
     printf("\n");
+}
+
+void update_motor_temperature() {
+    if (velocidade >= 60.0) {
+        motor_temperature += 0.1; // Aumentar a temperatura
+    } else {
+        motor_temperature -= 0.1; // Diminuir a temperatura
+    }
+    
+    // Limitar a temperatura entre 60 e 100 graus
+    if (motor_temperature < 60.0) {
+        motor_temperature = 60.0;
+    } else if (motor_temperature > 100.0) {
+        motor_temperature = 100.0;
+    }
 }
 
 void data_reading(){
@@ -69,9 +85,13 @@ void data_print(){
         printBinaryField("(F)AirBag passageiro", binary_life_support_system + 1);
         printBinaryField("(D)Cinto motorista", binary_life_support_system + 2);
         printBinaryField("(S)Cinto passageiro", binary_life_support_system + 3);
-
+        update_motor_temperature(); // Atualizar a temperatura com base na velocidade
         // Imprima a temperatura
         printf("Temperatura do motor: %.2f\n", motor_temperature);
+        if (velocidade > 0.0) {
+            velocidade -= 0.1;
+            }
+        printf("( )Velocidade: %.2f\n", velocidade);
 
         usleep(5000);
         system("clear");
