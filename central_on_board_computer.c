@@ -7,9 +7,24 @@
 #include "Systems/brake_system.h"
 #include "Systems/motor_system.h"
 #include "Systems/life_support_equipment_system.h"
-
+// Como criar o Executável:
 //gcc -o central Systems/lvt_system.c Systems/brake_system.c Systems/motor_system.c Systems/life_support_equipment_system.c Utils/termios_util.c central_on_board_computer.c -lpthread
+// Como Rodar:
 // ./central
+// --Comandos--
+// v = Vidro Motorista
+// b = Vidro Passageiro
+// n = Trava Porta Motorista
+// m = Trava Porta Passageiro
+// l = Faróis Dianteiros
+// k = ABS Roda Direita
+// j = ABS Roda Esquerda
+// h = Injeção
+// g = AirBag Motorista
+// f = AirBag Passageiro
+// d = Cinto Motorista
+// s = Cinto Passageiro
+
 
 extern float motor_temperature;     //Variável para a leitura da temperatura do Motor
 extern char binary_lvtsystem[6];    //Variável para a leitura do código binário LVT
@@ -39,21 +54,21 @@ void data_print(){
         // printf("%s-", binary_motor_system);
         // printf("%s-", binary_life_support_system);
         // printf("%0.2f\n", motor_temperature);
-        printBinaryField("Vidro Motorista", binary_lvtsystem);
-        printBinaryField("Vidro Passageiro", binary_lvtsystem + 1);
-        printBinaryField("Trava porta motorista", binary_lvtsystem + 2);
-        printBinaryField("Trava porta passageiro", binary_lvtsystem + 3);
-        printBinaryField("Faróis dianteiros", binary_lvtsystem + 4);
+        printBinaryField("(V)Vidro Motorista", binary_lvtsystem);
+        printBinaryField("(B)Vidro Passageiro", binary_lvtsystem + 1);
+        printBinaryField("(N)Trava porta motorista", binary_lvtsystem + 2);
+        printBinaryField("(M)Trava porta passageiro", binary_lvtsystem + 3);
+        printBinaryField("(L)Faróis dianteiros", binary_lvtsystem + 4);
 
-        printBinaryField("ABS roda direita", binary_brake_system);
-        printBinaryField("ABS roda esquerda", binary_brake_system + 1);
+        printBinaryField("(K)ABS roda direita", binary_brake_system);
+        printBinaryField("(J)ABS roda esquerda", binary_brake_system + 1);
 
-        printBinaryField("Injeção", binary_motor_system);
+        printBinaryField("(H)Injeção", binary_motor_system);
 
-        printBinaryField("AirBag motorista", binary_life_support_system);
-        printBinaryField("AirBag passageiro", binary_life_support_system + 1);
-        printBinaryField("Cinto motorista", binary_life_support_system + 2);
-        printBinaryField("Cinto passageiro", binary_life_support_system + 3);
+        printBinaryField("(G)AirBag motorista", binary_life_support_system);
+        printBinaryField("(F)AirBag passageiro", binary_life_support_system + 1);
+        printBinaryField("(D)Cinto motorista", binary_life_support_system + 2);
+        printBinaryField("(S)Cinto passageiro", binary_life_support_system + 3);
 
         // Imprima a temperatura
         printf("Temperatura do motor: %.2f\n", motor_temperature);
