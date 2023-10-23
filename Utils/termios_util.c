@@ -28,6 +28,7 @@ void le_teclado()
         char tecla;
         char buffer[1];
         motor_temperature = 60; // Temperatura do motor
+
         if (read(STDIN_FILENO, buffer, 1) > 0)
         {
             tecla = buffer[0];

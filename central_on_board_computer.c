@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <time.h>
+#include <sys/time.h>
 #include "Utils/termios_util.h"
 #include "Systems/lvt_system.h"
 #include "Systems/brake_system.h"
@@ -18,20 +19,6 @@ extern char binary_lvtsystem[6];           // Variável para a leitura do códig
 extern char binary_brake_system[3];        // Variável para a leitura do código binário Freio
 extern char binary_motor_system[2];        // Variável para a leitura do código binário Motor
 extern char binary_life_support_system[5]; // Variável para a leitura do código binário LSE
-
-/*
-double get_time_clock(struct timespec end, struct timespec start) // funcao para medir o tempo em segundos
-{
-    clock_gettime(CLOCK_MONOTONIC, &end);
-    return (end.tv_sec - start.tv_sec) + 1e-9 * (end.tv_nsec - start.tv_nsec);
-}
-
-uint64_t get_time_cycle(uint64_t begin, uint64_t endCycle) // funcao para medir o tempo em clock
-{
-    endCycle = __rdtsc();
-    return (endCycle - begin);
-}
-*/
 
 void printBinaryField(const char *name, const char *binary)
 {
@@ -49,14 +36,24 @@ void printBinaryField(const char *name, const char *binary)
     printf("\n");
 }
 
+struct timeval start_time, end_time; // variaveis para calcular o tempo
+
 void data_reading()
 {
+    gettimeofday(&start_time, NULL); // inicia calculo do tempo
     le_teclado();
 }
 void data_print()
 {
+
     while (1)
     {
+        gettimeofday(&end_time, NULL); // finaliza calculo do tempo
+        long seconds = end_time.tv_sec - start_time.tv_sec;
+        long microseconds = end_time.tv_usec - start_time.tv_usec;
+        double elapsed = seconds + microseconds / 1e6;
+
+        printf("Tempo total gasto: %.6f segundos\n", elapsed);
         // printf("%s-", binary_lvtsystem);
         // printf("%s-", binary_brake_system);
         // printf("%s-", binary_motor_system);
