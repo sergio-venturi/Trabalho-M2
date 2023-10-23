@@ -3,14 +3,15 @@
 #include <string.h>
 
 char binary_lvtsystem[6] = "00000";
-extern char binary_system[13]; 
+extern char binary_system[13];
 
-int lvt_system() {
+int lvt_system()
+{
     while (1)
     {
         strncpy(binary_lvtsystem, binary_system, 5);
-        usleep(1000);/* code */
+        usleep(1000); /* code */
     }
-    
+
     return 0;
 }
