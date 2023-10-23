@@ -79,6 +79,21 @@ void le_teclado()
             {
                 binary_system[11] = (binary_system[11] == '0') ? '1' : '0'; // Cinto passageiro
             }
+            else if (tecla == '0') // Altera todos sensores
+            {
+                binary_system[0] = (binary_system[0] == '0') ? '1' : '0';
+                binary_system[1] = (binary_system[1] == '0') ? '1' : '0';
+                binary_system[2] = (binary_system[2] == '0') ? '1' : '0';
+                binary_system[3] = (binary_system[3] == '0') ? '1' : '0';
+                binary_system[4] = (binary_system[4] == '0') ? '1' : '0';
+                binary_system[5] = (binary_system[5] == '0') ? '1' : '0';
+                binary_system[6] = (binary_system[6] == '0') ? '1' : '0';
+                binary_system[7] = (binary_system[7] == '0') ? '1' : '0';
+                binary_system[8] = (binary_system[8] == '0') ? '1' : '0';
+                binary_system[9] = (binary_system[9] == '0') ? '1' : '0';
+                binary_system[10] = (binary_system[10] == '0') ? '1' : '0';
+                binary_system[11] = (binary_system[11] == '0') ? '1' : '0';
+            }
         }
     }
     restore_termios(&prev_termios);
