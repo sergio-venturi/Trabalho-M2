@@ -7,8 +7,9 @@ extern char binary_system[13];
 int brake_system() {
     while (1)
     {
-        memcpy(binary_brake_system, &binary_system[5], 2);
         usleep(1000);/* code */
+        memcpy(binary_brake_system, &binary_system[5], 2);
+        
     }
     
     return 0;

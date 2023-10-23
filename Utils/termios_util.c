@@ -20,6 +20,7 @@ void le_teclado() {
     set_termios(&prev_termios);
 
     while (1) {
+        usleep(11); //delay de 10us pelo fio e 1us de aquisicao do sensor
         char tecla;
         char buffer[1];
         motor_temperature = 60; // Temperatura do motor
