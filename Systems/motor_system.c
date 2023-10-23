@@ -1,5 +1,6 @@
 #include "../Utils/termios_util.h"
 #include <string.h>
+#include <sys/time.h>
 
 extern char binary_system[13];
 char binary_motor_system[2] = "0"; // Injeção Ligada - Desligada
